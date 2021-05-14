@@ -4,8 +4,8 @@ class UsersController < ApplicationController
 
   def login
     @user = User.find_by_username(params[:username])
-    unless @user.authenticate(params[:password])
-      json_response({ "message": "wrong password" })
+    if not @user.nil? and not @user.authenticate(params[:password])
+      error_response({ "error": "wrong password" })
       return
     end
     @user = User.create!(user_params) unless @user
