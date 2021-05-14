@@ -1,32 +1,32 @@
 class PostsController < ApplicationController
-  before_action :set_todo, only: [:show, :update, :destroy]
+  before_action :set_post, only: [:show, :update, :destroy]
 
   # GET /posts
   def index
-    @todos = Post.all
-    json_response(@todos)
+    @posts = Post.all
+    json_response(@posts)
   end
 
   # POST /posts
   def create
-    @todo = Post.create!(post_params)
-    json_response(@todo, :created)
+    @post = Post.create!(post_params)
+    json_response(@post, :created)
   end
 
   # GET /posts/:id
   def show
-    json_response(@todo)
+    json_response(@post)
   end
 
   # PUT /posts/:id
   def update
-    @todo.update(post_params)
+    @post.update(post_params)
     head :no_content
   end
 
   # DELETE /posts/:id
   def destroy
-    @todo.destroy
+    @post.destroy
     head :no_content
   end
 
@@ -37,7 +37,7 @@ class PostsController < ApplicationController
     params.permit(:title, :text, :category_id, :user_id)
   end
 
-  def set_todo
-    @todo = Post.find(params[:id])
+  def set_post
+    @post = Post.find(params[:id])
   end
 end
