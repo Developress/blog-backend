@@ -10,4 +10,7 @@ class Post < ApplicationRecord
     as_json.merge({username: self.user.username,
                    category: self.category.name})
   end
+
+  validates :title, :text, :user_id, :category_id, presence: true
+  validates :title, length: { within: 5..50 }
 end
