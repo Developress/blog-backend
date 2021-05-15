@@ -19,11 +19,12 @@ ActiveRecord::Schema.define(version: 2021_05_14_192701) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "text"
-    t.string "created_by"
+    t.integer "user_id"
     t.integer "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_posts_on_category_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -32,4 +33,5 @@ ActiveRecord::Schema.define(version: 2021_05_14_192701) do
   end
 
   add_foreign_key "posts", "categories"
+  add_foreign_key "posts", "users"
 end
