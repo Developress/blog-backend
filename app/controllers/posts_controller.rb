@@ -30,6 +30,17 @@ class PostsController < ApplicationController
     json_response({"message": "deleted"})
   end
 
+  # POST /posts/filter
+  def filter
+    categories_ids = params[:categories_ids]
+    @posts = Array.new
+    categories_ids.each do |id|
+      @category = Category.find_by(id: id)
+      @posts.push(*@category.posts)
+    end
+    json_response(@posts)
+  end
+
   private
 
   def post_params
