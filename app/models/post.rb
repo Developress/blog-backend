@@ -1,4 +1,12 @@
 class Post < ApplicationRecord
   belongs_to :category
   belongs_to :user
+
+  scope :with_categories, -> {includes(:category)}
+  scope :with_users, -> {includes(:user)}
+
+  def append_category_and_user
+    as_json.merge({username: self.user.username,
+                   category: self.category.name})
+  end
 end

@@ -3,8 +3,8 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    @posts = Post.all
-    json_response(@posts)
+    @posts = Post.all.with_categories.with_users
+    json_response(@posts.collect{|p| p.append_category_and_user})
   end
 
   # POST /posts
