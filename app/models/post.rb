@@ -4,6 +4,7 @@ class Post < ApplicationRecord
 
   scope :with_categories, -> {includes(:category)}
   scope :with_users, -> {includes(:user)}
+  scope :search_by_starts_with, -> (title) { where("title like ?", "#{title}%")}
 
   def append_category_and_user
     as_json.merge({username: self.user.username,

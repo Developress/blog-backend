@@ -3,7 +3,11 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    @posts = Post.all.with_categories.with_users
+    if params[:title].present?
+      @posts = Post.search_by_starts_with(params[:title])
+    else
+      @posts = Post.all.with_categories.with_users
+    end
     json_response(@posts.collect{|p| p.append_category_and_user})
   end
 
