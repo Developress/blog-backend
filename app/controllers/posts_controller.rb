@@ -42,7 +42,7 @@ class PostsController < ApplicationController
       @category = Category.find_by(id: id)
       @posts.push(*@category.posts)
     end
-    json_response(@posts)
+    json_response(@posts.collect{|p| p.append_category_and_user})
   end
 
   private
