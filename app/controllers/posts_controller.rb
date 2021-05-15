@@ -21,13 +21,13 @@ class PostsController < ApplicationController
   # PUT /posts/:id
   def update
     @post.update(post_params)
-    head :no_content
+    json_response(@post)
   end
 
   # DELETE /posts/:id
   def destroy
     @post.destroy
-    head :no_content
+    json_response({"message": "deleted"})
   end
 
   private
