@@ -49,7 +49,7 @@ class PostsController < ApplicationController
 
   def post_params
     # whitelist params
-    params.permit(:title, :text, :category_id, :user_id)
+    params.permit(:title, :text, :category_id, :user_id, :image)
   end
 
   def set_post

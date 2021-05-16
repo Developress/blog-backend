@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_05_14_192701) do
     t.text "text"
     t.integer "user_id"
     t.integer "category_id"
+    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_posts_on_category_id"
