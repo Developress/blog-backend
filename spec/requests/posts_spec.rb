@@ -44,7 +44,7 @@ RSpec.describe "Blog Api", type: :request do
     context 'when the request is valid' do
       before { post '/posts', params: valid_attributes }
 
-      it 'creates a todo' do
+      it 'creates a post' do
         expect(json['title']).to eq('New post')
       end
 

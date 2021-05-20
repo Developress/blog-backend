@@ -56,4 +56,6 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+  config.web_console.development_only = false
+  config.hosts << "www.example.com"
 end

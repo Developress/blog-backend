@@ -8,3 +8,5 @@
 Category.create(name: 'Science')
 Category.create(name: 'Tech')
 Category.create(name: 'Sport')
+User.create(username: 'olena', password: 'olena')
+Post.create(title: 'First post', text: 'First post', user_id: 1, category_id:1)
